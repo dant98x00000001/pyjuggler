@@ -5,12 +5,13 @@ from ballmgr import Ball
 # Set Constants
 WIDTH = 800  # Screen Width
 HEIGHT = 600  # Screen Height
-BACKGROUND = (0, 0, 0)  # Background Color
+BACKGROUND = (0, 255, 0)  # Background Color
 
 def main():
     pygame.init()  # Initialize the PyGame environment
     screen = pygame.display.set_mode((WIDTH, HEIGHT))  # Set screen size
     clock = pygame.time.Clock()  # Create Clock for managing time
+    print(pygame.display.get_surface().get_size())
 
     # Create Ball Objects.  Three for your average juggler
     ball1 = Ball(WIDTH, HEIGHT)  # First Ball

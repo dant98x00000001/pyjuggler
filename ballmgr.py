@@ -3,13 +3,16 @@
 import pygame
 import random
 
+#ballimage = "small_tennis.png"
+ballimage = "deathstar1.png"
+
 class Ball:
     # PyGame class defines the ball and behavior
-    def __init__(self, HEIGHT, WIDTH):
+    def __init__(self, WIDTH, HEIGHT):
         # Load the ball image
-        self.image = pygame.image.load("small_tennis.png")
+        self.image = pygame.image.load(ballimage)
         # Resize the ball image
-        self.image = pygame.transform.scale(self.image, (25,25))
+        self.image = pygame.transform.scale(self.image, (35, 35))
         self.speed = [0, 1]  # Ball velocity
         self.rect = self.image.get_rect()  # Creates the movable sprite
         self.alive = True  # Ball hasn't dropped
