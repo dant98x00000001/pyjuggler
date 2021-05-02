@@ -56,8 +56,9 @@ def main():
                     # If the ball was dropped, remove it from the list
                     del balls[i]
 
-            if len(balls) == 1:
-                # We dropped all the balls
+            if len(balls) <= 1:
+                # We dropped all but one ball, which is too easy to juggle.
+                # Or we quit the game (zero balls)
                 gameover = True  # Game over
 
             if score != prevscore and score % 10 == 0:
@@ -68,7 +69,7 @@ def main():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     # If there is a QUIT event (user clicked close)
-                    balls = []  # Remove all the remaining balls
+                    balls = []  # Remove all but one the remaining balls
 
             pygame.event.wait(5)  # Give a little bit of wait time before checking again
         pygame.display.flip()  # Repaints the display w/ new object positions
