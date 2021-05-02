@@ -22,9 +22,12 @@ def main():
         balls.append(Ball(WIDTH, HEIGHT))
 
     score = 0  # Initialize the juggler's score
+    prevscore = 0
     gameover = False  # Initialize game as running
-
+    pygame.display.set_caption(f'PyJuggling Score: {score}')
     while not gameover:
+        if score != prevscore:
+            pygame.display.set_caption(f'PyJuggling Score: {score}')
         if pygame.mouse.get_focused():
             # Keep looping while game isn't over.
             for event in pygame.event.get():
@@ -53,21 +56,27 @@ def main():
                     # If the ball was dropped, remove it from the list
                     del balls[i]
 
-            if len(balls) == 0:
+            if len(balls) == 1:
                 # We dropped all the balls
                 gameover = True  # Game over
+
+            if score != prevscore and score % 10 == 0:
+                prevscore = score
+                balls.append(Ball(WIDTH, HEIGHT))
         else:
             # Get events occuring while the window is not in focus
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     # If there is a QUIT event (user clicked close)
                     balls = []  # Remove all the remaining balls
+
             pygame.event.wait(5)  # Give a little bit of wait time before checking again
         pygame.display.flip()  # Repaints the display w/ new object positions
         clock.tick(60)  # Refresh rate in milliseconds.
 
     # Print Game Over message and display score
     print(f"Game Over.  You juggled balls {score} times.")
+    pygame.quit()
 
 if __name__ == "__main__":
     # This is executed when this script is ran, not imported.

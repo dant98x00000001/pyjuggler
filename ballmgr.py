@@ -18,6 +18,7 @@ class Ball:
         self.alive = True  # Ball hasn't dropped
         self.HEIGHT = HEIGHT
         self.WIDTH = WIDTH
+        self.rect.left = random.randint(0, WIDTH-self.rect.right)
 
     def update(self):
         # Allows for logic while updating sprites
