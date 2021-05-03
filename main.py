@@ -8,6 +8,7 @@ HEIGHT = 600  # Screen Height
 WINDOW_SIZE = (WIDTH, HEIGHT)  # Window Size tuple
 BACKGROUND_COLOR = (0, 255, 0)  # Background Color
 DIFFICULTY = 3  # Number of Balls to juggle
+# 
 
 def main():
     pygame.init()  # Initialize the PyGame environment
