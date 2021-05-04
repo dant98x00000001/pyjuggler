@@ -7,14 +7,16 @@ WIDTH = 800  # Screen Width
 HEIGHT = 600  # Screen Height
 WINDOW_SIZE = (WIDTH, HEIGHT)  # Window Size tuple
 BACKGROUND_COLOR = (0, 255, 0)  # Background Color
-DIFFICULTY = 3  # Number of Balls to juggle
-# 
+# DIFFICULTY = 3  # Number of Balls to juggle
+
 
 def main():
     pygame.init()  # Initialize the PyGame environment
     screen = pygame.display.set_mode(WINDOW_SIZE)  # Set screen size
     clock = pygame.time.Clock()  # Create Clock for managing time
     background_image = pygame.transform.scale(pygame.image.load("galaxy_background.jpg"), WINDOW_SIZE)
+    
+    DIFFICULTY = int(input('How many death stars do you want to play with... tough guy?\n'))
 
     # Create Ball Objects.  Three for your average juggler
     balls = []  # Initialize List of balls in play
