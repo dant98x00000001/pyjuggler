@@ -1,6 +1,7 @@
 import pygame  # Provides PyGame framework
 import random  # Used for randomization
 from ballmgr import Ball
+from time import sleep
 
 import os, sys
 APP_FOLDER = os.path.dirname(os.path.realpath(sys.argv[0]))
@@ -33,6 +34,7 @@ def main():
     screen = pygame.display.set_mode(WINDOW_SIZE)  # Set screen size
     clock = pygame.time.Clock()  # Create Clock for managing time
     background_image = pygame.transform.scale(pygame.image.load("galaxy_background.jpg"), WINDOW_SIZE)
+    gameover_image = pygame.transform.scale(pygame.image.load("game-over-death.jpg"), WINDOW_SIZE)
     # Sounds
     blaster_sounds, fail_sounds, gameover_sound = getsounds()
 
@@ -46,6 +48,7 @@ def main():
     prevscore = 0
     gameover = False  # Initialize game as running
     pygame.display.set_caption(f'PyJuggling Score: {score}')
+    QUIT = False
     while not gameover:
         if score != prevscore:
             pygame.display.set_caption(f'PyJuggling Score: {score}')
@@ -82,6 +85,8 @@ def main():
             if len(balls) <= 1:
                 # We dropped all but one ball, which is too easy to juggle.
                 # Or we quit the game (zero balls)
+                screen.blit(gameover_image, [0, 0])
+                pygame.display.update()
                 pygame.mixer.Sound.play(gameover_sound)
                 QUIT = False
                 while pygame.mixer.get_busy() and not QUIT:
